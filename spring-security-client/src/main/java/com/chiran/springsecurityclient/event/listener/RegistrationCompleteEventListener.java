@@ -23,11 +23,6 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
     @Autowired
     private UserService userService;
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void triggerMail(){
-        emailSenderService.sendSimpleEmail("chiranwettewa@gmail.com","dbcjwhdchwdcjh","jvdcjgvqwd");
-        System.out.println("sent");
-    }
 
     @Override
     public void onApplicationEvent(RegistrationCompleteEvent event) {
@@ -35,9 +30,9 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         String token = UUID.randomUUID().toString();
         userService.saveVerificationTokenForUser(user, token);
 
-        String url = event.getApplicationUrl() + "verifyRegistration?token=" + token;
+        String url = event.getApplicationUrl() + "/verifyRegistration?token=" + token;
 
-        emailSenderService.sendSimpleEmail("chiranw.15@itfac.mrt.ac.lk",url,"chiranwettewa@gmail.com");
+        emailSenderService.sendEmail(user.getEmail(),"Click below link to verify the password. "  + "\r\n" +url,"Verification token for spring security demo application");
 
         log.info("Click to verify : {}",url);
     }

@@ -11,7 +11,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendSimpleEmail(String toEmail, String body, String subject){
+    public void sendEmail(String toEmail, String body, String subject){
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom("chiranw.15@itfac.mrt.ac.lk");

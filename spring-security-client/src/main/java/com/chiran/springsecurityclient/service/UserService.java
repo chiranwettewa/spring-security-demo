@@ -1,6 +1,7 @@
 package com.chiran.springsecurityclient.service;
 
 import com.chiran.springsecurityclient.entity.User;
+import com.chiran.springsecurityclient.entity.VerificationToken;
 import com.chiran.springsecurityclient.model.UserModel;
 
 public interface UserService {
@@ -8,4 +9,7 @@ public interface UserService {
 
     void saveVerificationTokenForUser(User user, String token);
 
+    String validateVerificationToken(String token);
+
+    VerificationToken genarateNewVerificationToken(String oldToken);
 }
