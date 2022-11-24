@@ -29,6 +29,17 @@ public class RegistrationController {
     @Autowired
     private ApplicationEventPublisher publisher;
 
+    @GetMapping("/hello")
+    public String hello(){
+
+        return "hello hello";
+    }
+    @GetMapping("/hi")
+    public String hi(){
+
+        return "hi hi";
+    }
+
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request){
         System.out.println("request -----"+request);
