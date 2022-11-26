@@ -2,6 +2,7 @@ package com.chiran.springsecurityclient.config;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,11 +31,16 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(WHITE_LIST_URLS).permitAll()
+                .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
                 .and()
-                .csrf().disable();
+                .csrf()
+                .disable()
+                .oauth2Login(oauth2login ->
+                        oauth2login.loginPage("/oauth2/authorization/api-client-oidc"))
+                .oauth2Client(Customizer.withDefaults());
 
         /*http.cors()
                 .and()

@@ -60,9 +60,8 @@
 			<version>2.0.1.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.passay</groupId>
-			<artifactId>passay</artifactId>
-			<version>1.6.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 	</dependencies>
 

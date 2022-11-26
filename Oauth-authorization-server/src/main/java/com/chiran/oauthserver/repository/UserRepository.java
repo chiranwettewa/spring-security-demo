@@ -1,6 +1,6 @@
 package com.chiran.oauthserver.repository;
 
-import com.chiran.springsecurityclient.entity.User;
+import com.chiran.oauthserver.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
