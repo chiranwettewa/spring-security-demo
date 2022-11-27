@@ -42,12 +42,18 @@ public class WebSecurityConfig {
                         oauth2login.loginPage("/oauth2/authorization/api-client-oidc"))
                 .oauth2Client(Customizer.withDefaults());
 
-        /*http.cors()
+        /*http
+                .cors()
                 .and()
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers(WHITE_LIST_URLS).permitAll();*/
+                .antMatchers(WHITE_LIST_URLS).permitAll()
+                .antMatchers("/api/**").authenticated()
+                .and()
+                .oauth2Login(oauth2login ->
+                        oauth2login.loginPage("/oauth2/authorization/api-client-oidc"))
+                .oauth2Client(Customizer.withDefaults());*/
 
         return http.build();
     }
